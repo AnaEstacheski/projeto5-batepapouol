@@ -5,6 +5,40 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+.TelaInicial input{
+    border: 1px solid #D7D7D7;
+    text-align: center;
+    padding: 15px 30px;
+
+    font-weight: 400;
+    font-size: 18px;
+}
+.TelaInicial input:focus{
+    outline: 1px solid #3f3b3b;
+    border: none;
+}
+.TelaInicial input::placeholder{
+    color: #AEAEAE;
+}
+.BottomBar input{
+    border-style:none;
+    height: 100%;
+    width: 80%;
+    font-size: 18px;
+    font-weight: 400;
+    color: #000000;
+    padding-left: 20px;
+}
+.BottomBar input::placeholder{
+    font-style: italic;
+}
+.BottomBar input:focus{
+    outline: none;
+}
+.BottomBar input:focus::placeholder, .TelaInicial input:focus::placeholder{
+    color: transparent;
+}
+
 .uolpequeno{
     width: 75px;
     height: 53px;
@@ -27,7 +61,11 @@ body{
     align-items: center;
     justify-content: center;
     border-radius: 9px;
+    cursor: pointer;
+}
 
+.entrarbtn:hover{
+    background-color: greenyellow;
 }
 
 .header{
@@ -57,16 +95,17 @@ body{
     box-sizing: border-box;
     width: 100%;
     background-color: white;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color:#000000;
+    font-size: 16px;
+    line-height: 16px;
     padding-top: 12px;
     padding-bottom: 12px;
     padding-left: 10px;
     padding-right: 5px;
-    color:#000000;
-    font-size: 16px;
-    line-height: 16px;
     font-size-adjust: 0;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    word-wrap:break-word;
 }
 
 .status{
@@ -128,6 +167,10 @@ body{
     background-color: #ffffff;
 }
 
-.hidden {
+.hidden{
     display: none;
+}
+
+.error{
+    outline: 1px solid red;
 }

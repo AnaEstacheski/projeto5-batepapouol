@@ -1,6 +1,14 @@
-let seuNome = 'Anavlia'
+let seuNome
 let nome = {
     name: seuNome
+}
+
+function Iniciar(){
+    lindonome = document.querySelector('.TelaInicial input').value
+    nome = {
+        name:lindonome
+    }
+    EntrarSala()
 }
 function EntrarSala(){
     const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', nome)
@@ -9,12 +17,17 @@ function EntrarSala(){
 }
 function ErroEntrar(elemento){
     if(elemento.response.status === 400){
-        seuNome = prompt('erro 400, nome inválido, digite novamente')
-        EntrarSala()
+        alert('erro 400, Nome inválido \n Digite novamente')
+        document.querySelector('.TelaInicial input').classList.add('error')
+        document.querySelector('.TelaInicial input').value = ''
     }
 }
 function SucessoEntrar(elemento){
-    console.log('entrou na sala')
+    document.querySelector('.TelaInicial').classList.add('hidden')
+    document.querySelector('.TelaPrincipal').classList.remove('hidden')
+    BuscarMensagens()
+    setInterval(BuscarMensagens, 3000)
+    setInterval(ManterConexao, 5000)
 }
 function BuscarMensagens(){
     const promise = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages')
@@ -73,7 +86,3 @@ function ManterConexao(){
     const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', nome)
     promessa.then()
 }
-EntrarSala()
-BuscarMensagens()
-setInterval(BuscarMensagens, 3000)
-setInterval(ManterConexao, 5000)
