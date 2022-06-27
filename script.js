@@ -104,8 +104,20 @@ function EnviarMensagem(){
         document.querySelector('.BottomBar input').classList.add('error')
     }
 }
+
+function TirarErro(){
+    document.querySelector('.BottomBar input').classList.remove('error')
+}
+
 function ErroMensagem(elemento){
     console.log(elemento)
     alert('Você não está mais logado, para enviar uma mensagem, faça login novamente')
     window.location.reload()
 }
+
+document.querySelector(".TelaPrincipal input").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        EnviarMensagem();
+    }
+})
+
