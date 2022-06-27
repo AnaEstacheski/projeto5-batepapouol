@@ -1,8 +1,8 @@
 let seuNome = 'Anavlia'
+let nome = {
+    name: seuNome
+}
 function EntrarSala(){
-    let nome = {
-        name: seuNome
-    }
     const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', nome)
     promise.then(SucessoEntrar)
     promise.catch(ErroEntrar)
@@ -69,5 +69,11 @@ ultimoelemento.parentNode.classList.add('Scroll')
 ultimoelemento.scrollIntoView()
 }
 
+function ManterConexao(){
+    const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', nome)
+    promessa.then()
+}
+EntrarSala()
 BuscarMensagens()
 setInterval(BuscarMensagens, 3000)
+setInterval(ManterConexao, 5000)
