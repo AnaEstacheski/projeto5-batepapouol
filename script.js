@@ -4,6 +4,12 @@ let nome = {
 }
 
 function Iniciar(){
+    if(document.querySelector('.TelaInicial input').value !== ''){
+        document.querySelector('.entrarbtn').classList.add('hidden')
+        document.querySelector('.TelaInicial input').classList.add('hidden')
+        document.querySelector('.gif').classList.remove('hidden')
+        document.querySelector('h3').classList.remove('hidden')
+    }
     seuNome = document.querySelector('.TelaInicial input').value
     nome = {
         name: seuNome
@@ -106,6 +112,7 @@ function EnviarMensagem(){
 }
 
 function TirarErro(){
+    document.querySelector('.TelaInicial input').classList.remove('error')
     document.querySelector('.BottomBar input').classList.remove('error')
 }
 
