@@ -15,37 +15,73 @@ function BuscarMensagens(){
 function CarregarMensagens(elementos){
     console.log(elementos)
     for( let i = 0 ; i < elementos.data.length ; i++){
-        if(elementos.data[i].type === 'status'){
-            const MensagensTemplate =
-            `<div class="DivMensagem status">
-                <span class="horario">(${elementos.data[i].time})</span>
-                <span class="usuario">${elementos.data[i].from}</span>
-                <span class="mensagem">${elementos.data[i].text}</span>
-            </div>`
-            document.querySelector('.chat').innerHTML += MensagensTemplate
-        }
-        if(elementos.data[i].type === 'message'){
-            const MensagensTemplate =
-            `<div class="DivMensagem">
-                <span class="horario">(${elementos.data[i].time})</span>
-                <span class="usuario">${elementos.data[i].from}</span>
-                <span>para</span>
-                <span class="usuario">${elementos.data[i].to}: </span>
-                <span class="mensagem">${elementos.data[i].text}</span>
-            </div>`
-            document.querySelector('.chat').innerHTML += MensagensTemplate
-        }
-        if(elementos.data[i].type === 'private_message'){
-            const MensagensTemplate =
-            `<div class="DivMensagem reservadas">
-                <span class="horario">(${elementos.data[i].time})</span>
-                <span class="usuario">${elementos.data[i].from}</span>
-                <span>reservadamente para</span>
-                <span class="usuario">${elementos.data[i].to}: </span>
-                <span class="mensagem">${elementos.data[i].text}</span>
-            </div>`
-            document.querySelector('.chat').innerHTML += MensagensTemplate
-        }
+        if(i === elementos.data.length - 1){
+            if(elementos.data[i].type === 'status'){
+                const MensagensTemplate =
+                `<div class="DivMensagem status ultimo">
+                    <span class="horario">(${elementos.data[i].time})</span>
+                    <span class="usuario">${elementos.data[i].from}</span>
+                    <span class="mensagem">${elementos.data[i].text}</span>
+                </div>`
+                document.querySelector('.chat').innerHTML += MensagensTemplate
+            }
+            if(elementos.data[i].type === 'message'){
+                const MensagensTemplate =
+                `<div class="DivMensagem ultimo">
+                    <span class="horario">(${elementos.data[i].time})</span>
+                    <span class="usuario">${elementos.data[i].from}</span>
+                    <span>para</span>
+                    <span class="usuario">${elementos.data[i].to}: </span>
+                    <span class="mensagem">${elementos.data[i].text}</span>
+                </div>`
+                document.querySelector('.chat').innerHTML += MensagensTemplate
+            }
+            if(elementos.data[i].type === 'private_message'){
+                const MensagensTemplate =
+                `<div class="DivMensagem reservadas ultimo">
+                    <span class="horario">(${elementos.data[i].time})</span>
+                    <span class="usuario">${elementos.data[i].from}</span>
+                    <span>reservadamente para</span>
+                    <span class="usuario">${elementos.data[i].to}: </span>
+                    <span class="mensagem">${elementos.data[i].text}</span>
+                </div>`
+                document.querySelector('.chat').innerHTML += MensagensTemplate
+            }
+        }else{
+            if(elementos.data[i].type === 'status'){
+                const MensagensTemplate =
+                `<div class="DivMensagem status">
+                    <span class="horario">(${elementos.data[i].time})</span>
+                    <span class="usuario">${elementos.data[i].from}</span>
+                    <span class="mensagem">${elementos.data[i].text}</span>
+                </div>`
+                document.querySelector('.chat').innerHTML += MensagensTemplate
+            }
+            if(elementos.data[i].type === 'message'){
+                const MensagensTemplate =
+                `<div class="DivMensagem ">
+                    <span class="horario">(${elementos.data[i].time})</span>
+                    <span class="usuario">${elementos.data[i].from}</span>
+                    <span>para</span>
+                    <span class="usuario">${elementos.data[i].to}: </span>
+                    <span class="mensagem">${elementos.data[i].text}</span>
+                </div>`
+                document.querySelector('.chat').innerHTML += MensagensTemplate
+            }
+            if(elementos.data[i].type === 'private_message'){
+                const MensagensTemplate =
+                `<div class="DivMensagem reservadas ">
+                    <span class="horario">(${elementos.data[i].time})</span>
+                    <span class="usuario">${elementos.data[i].from}</span>
+                    <span>reservadamente para</span>
+                    <span class="usuario">${elementos.data[i].to}: </span>
+                    <span class="mensagem">${elementos.data[i].text}</span>
+                </div>`
+                document.querySelector('.chat').innerHTML += MensagensTemplate
+            }
+        }    
     }
+const ultimoelemento = document.querySelector('.ultimo')
+ultimoelemento.scrollIntoView()
 }
 BuscarMensagens()
