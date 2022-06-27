@@ -120,7 +120,7 @@ function TirarErro(){
 
 function ErroMensagem(elemento){
     console.log(elemento)
-    alert('Você não está mais logado, para enviar uma mensagem, faça login novamente')
+    alert('Você não está mais logado \nPara enviar uma mensagem, \nfaça login novamente')
     window.location.reload()
 }
 
