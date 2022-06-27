@@ -4,9 +4,9 @@ let nome = {
 }
 
 function Iniciar(){
-    lindonome = document.querySelector('.TelaInicial input').value
+    seuNome = document.querySelector('.TelaInicial input').value
     nome = {
-        name:lindonome
+        name: seuNome
     }
     EntrarSala()
 }
@@ -22,8 +22,8 @@ function ErroEntrar(elemento){
         document.querySelector('.TelaInicial input').value = ''
     }
 }
-function SucessoEntrar(elemento){
-    document.querySelector('.TelaInicial').classList.add('hidden')
+function SucessoEntrar(){
+    document.querySelector('.TelaInicialBackground').classList.add('hidden')
     document.querySelector('.TelaPrincipal').classList.remove('hidden')
     BuscarMensagens()
     setInterval(BuscarMensagens, 3000)
@@ -85,4 +85,27 @@ ultimoelemento.scrollIntoView()
 function ManterConexao(){
     const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', nome)
     promessa.then()
+}
+
+function EnviarMensagem(){
+    if(document.querySelector('.BottomBar input').value !== ''){
+        document.querySelector('.BottomBar input').classList.remove('error')
+        let mensagem = {
+            from: seuNome,
+            to: 'Todos',
+            text: document.querySelector('.BottomBar input').value ,
+            type: "message"
+        }
+        document.querySelector('.BottomBar input').value = ''
+        const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', mensagem)
+        promessa.then(BuscarMensagens)
+        promessa.catch(ErroMensagem)
+    }else{
+        document.querySelector('.BottomBar input').classList.add('error')
+    }
+}
+function ErroMensagem(elemento){
+    console.log(elemento)
+    alert('Você não está mais logado, para enviar uma mensagem, faça login novamente')
+    window.location.reload()
 }

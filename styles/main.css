@@ -22,8 +22,8 @@ body{
 }
 .BottomBar input{
     border-style:none;
-    height: 100%;
-    width: 80%;
+    height: 50px;
+    width: 300px;
     font-size: 18px;
     font-weight: 400;
     color: #000000;
@@ -144,8 +144,13 @@ body{
 }
 
 .planeicon{
-    font-size: 26px;
+    font-size: 34px;
+    cursor: pointer;
 }
+
+.planeicon:hover{
+    filter:contrast(70%)
+} 
 
 .TelaPrincipal{
     width: 100%;
